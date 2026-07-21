@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.devops</groupId>
-    <artifactId>jenkins-java-ci</artifactId>
+    <artifactId>jenkins-webapp</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
-    <name>Jenkins Java CI Project</name>
-    <description>A simple Java Maven project for demonstrating Jenkins CI Pipeline.</description>
+    <name>Jenkins Web Application</name>
+    <description>Simple Maven WAR project for Jenkins CI/CD</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -30,12 +30,22 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Jakarta Servlet API -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
+        <finalName>jenkins-webapp</finalName>
+
         <plugins>
 
-            <!-- Maven Compiler Plugin -->
+            <!-- Compiler Plugin -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
@@ -45,16 +55,16 @@
                 </configuration>
             </plugin>
 
-            <!-- Maven Surefire Plugin -->
+            <!-- Surefire Plugin -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
             </plugin>
 
-            <!-- Maven JAR Plugin -->
+            <!-- WAR Plugin -->
             <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.4.1</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
             </plugin>
 
         </plugins>
