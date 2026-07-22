@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: Maven
+Build-Jdk: 11
+Specification-Title: TaskFlow Dashboard
+Specification-Version: 1.0.0
+Implementation-Title: taskflow-ui
+Implementation-Version: 1.0.0
+Implementation-Vendor: TaskFlow
+Class-Path: 
