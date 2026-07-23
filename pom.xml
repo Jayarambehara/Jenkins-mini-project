@@ -10,8 +10,8 @@
     <version>1.0.0</version>
     <packaging>war</packaging>
 
-    <name>TaskFlow UI Dashboard</name>
-    <description>Modern task management dashboard UI</description>
+    <name>E-Commerce Store</name>
+    <description>Modern E-Commerce Application</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -66,7 +66,7 @@
     </dependencies>
 
     <build>
-        <finalName>taskflow</finalName>
+        <finalName>ecommerce</finalName>
         <plugins>
             <!-- Maven WAR Plugin -->
             <plugin>
@@ -118,11 +118,11 @@
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
                     <server>tomcat</server>
-                    <path>/taskflow</path>
+                    <path>/ecommerce</path>
                     <username>admin</username>
                     <password>admin</password>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-</project>Fjara
+</project>
