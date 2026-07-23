@@ -2,121 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✦ TaskUI · modern dashboard</title>
-  <!-- Font Awesome 6 (Free) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>UrbanMarket · E‑commerce UI with images</title>
+  <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
     body {
-      background: linear-gradient(145deg, #f6f9fc 0%, #edf2f7 100%);
-      min-height: 100vh;
+      background: #f4f6fa;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
     }
 
-    /* main card – glassmorphism + soft shadow */
-    .dashboard {
-      max-width: 1100px;
+    .shop-container {
+      max-width: 1280px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 2.5rem;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 60px rgba(0, 10, 30, 0.08), 0 8px 24px rgba(0, 0, 0, 0.02);
       padding: 2rem 2rem 2.5rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 
-                  inset 0 1px 2px rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.4);
       transition: all 0.2s ease;
     }
 
-    /* header */
-    .header {
+    /* ---- HEADER / NAV ---- */
+    .top-bar {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
 
-    .header-left h1 {
-      font-size: 1.9rem;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand i {
+      font-size: 2rem;
+      color: #1e293b;
+      background: #eef2f6;
+      padding: 0.5rem;
+      border-radius: 16px;
+    }
+
+    .brand h1 {
+      font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #1e293b, #334155);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
+      color: #0b1b33;
     }
 
-    .header-left h1 i {
-      background: #3b82f6;
-      background: linear-gradient(145deg, #3b82f6, #2563eb);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-size: 2rem;
+    .brand span {
+      font-weight: 400;
+      color: #5b6f87;
+      font-size: 0.9rem;
+      margin-left: 0.25rem;
     }
 
-    .header-left p {
-      color: #475569;
-      font-weight: 500;
-      font-size: 0.95rem;
-      margin-top: 0.2rem;
-      letter-spacing: 0.01em;
+    .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 1.5rem;
     }
 
-    .header-left p i {
-      color: #3b82f6;
-      font-size: 0.7rem;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 0.8rem;
-      align-items: center;
-    }
-
-    .search-wrapper {
-      background: white;
-      border-radius: 60px;
-      padding: 0.5rem 1.2rem;
+    .nav-actions .search-wrapper {
+      background: #f1f5f9;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(0,0,0,0.02);
-      transition: all 0.2s;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      gap: 0.5rem;
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .nav-actions .search-wrapper:focus-within {
+      background: #ffffff;
+      border-color: #b6c8db;
+      box-shadow: 0 0 0 3px rgba(30, 41, 59, 0.05);
     }
 
     .search-wrapper i {
-      color: #94a3b8;
-      font-size: 0.9rem;
+      color: #6e7f94;
+      font-size: 0.95rem;
     }
 
     .search-wrapper input {
       border: none;
       background: transparent;
       outline: none;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      width: 180px;
       padding: 0.2rem 0;
-      width: 150px;
       color: #1e293b;
-      font-weight: 500;
     }
 
     .search-wrapper input::placeholder {
@@ -124,556 +112,555 @@
       font-weight: 400;
     }
 
-    .btn-icon {
-      background: white;
+    .icon-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .icon-group button {
+      background: transparent;
       border: none;
-      width: 42px;
-      height: 42px;
-      border-radius: 60px;
+      font-size: 1.4rem;
+      color: #334155;
+      cursor: pointer;
+      transition: 0.2s;
+      position: relative;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 30px;
+    }
+
+    .icon-group button:hover {
+      background: #f1f5f9;
+      color: #0b1b33;
+    }
+
+    .icon-group .cart-badge {
+      position: relative;
+    }
+
+    .cart-badge .badge {
+      position: absolute;
+      top: 0;
+      right: -2px;
+      background: #dc2626;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.45rem;
+      border-radius: 20px;
+      border: 2px solid white;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    /* ---- category pills ---- */
+    .category-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2.2rem;
+      border-bottom: 1px solid #e9edf2;
+      padding-bottom: 1.25rem;
+    }
+
+    .category-pill {
+      background: #f8fafc;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
       color: #1e293b;
-      font-size: 1.2rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(0,0,0,0.02);
-      cursor: default;
+      border: 1px solid #e2e8f0;
       transition: 0.15s;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      cursor: default;
+      letter-spacing: 0.01em;
     }
 
-    .btn-icon i {
-      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+    .category-pill i {
+      margin-right: 6px;
+      font-size: 0.8rem;
+      color: #5b6f87;
     }
 
-    .btn-primary {
+    .category-pill.active {
       background: #1e293b;
       color: white;
-      border: none;
-      padding: 0.7rem 1.6rem;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 8px 16px -6px rgba(30, 41, 59, 0.25);
-      cursor: default;
-      transition: 0.15s;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-color: #1e293b;
     }
 
-    .btn-primary i {
-      font-size: 0.9rem;
+    .category-pill.active i {
+      color: white;
     }
 
-    /* stats row */
-    .stats {
+    .category-pill:not(.active):hover {
+      background: #eef2f6;
+      border-color: #cbd5e1;
+    }
+
+    /* ---- product grid ---- */
+    .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.2rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem 1.5rem;
+      margin-top: 0.5rem;
     }
 
-    .stat-card {
+    .product-card {
       background: white;
-      padding: 1.3rem 1.2rem;
-      border-radius: 1.8rem;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(0,0,0,0.01);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      transition: 0.2s;
+      border-radius: 24px;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+      border: 1px solid #f0f3f7;
+      padding: 1rem 1rem 1.2rem;
       display: flex;
-      align-items: center;
-      gap: 0.8rem;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
     }
 
-    .stat-icon {
-      width: 44px;
-      height: 44px;
-      background: #eff6ff;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #2563eb;
-      font-size: 1.4rem;
-    }
-
-    .stat-content h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #0f172a;
-      letter-spacing: -0.01em;
-    }
-
-    .stat-content p {
-      color: #64748b;
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-    }
-
-    /* main grid – tasks + side */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1.8rem;
-    }
-
-    /* ----- TASK LIST ----- */
-    .task-section {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-radius: 2rem;
-      padding: 1.5rem 1.5rem 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-    }
-
-    .task-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .task-header h2 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .task-header h2 i {
-      color: #3b82f6;
-      font-size: 1.1rem;
-    }
-
-    .task-header span {
-      background: #e2e8f0;
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #334155;
-    }
-
-    .task-item {
-      background: white;
-      border-radius: 1.5rem;
-      padding: 1rem 1.2rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
-      border: 1px solid rgba(0,0,0,0.02);
-      transition: 0.15s;
-    }
-
-    .task-item:hover {
-      border-color: rgba(59, 130, 246, 0.2);
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: #dce3ec;
+      box-shadow: 0 16px 30px -8px rgba(0, 20, 40, 0.08);
       background: #fafcff;
     }
 
-    .task-check {
-      width: 22px;
-      height: 22px;
-      border-radius: 8px;
-      border: 2px solid #cbd5e1;
-      background: white;
+    .product-image {
+      background: #f2f6fd;
+      border-radius: 20px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 0.7rem;
-      flex-shrink: 0;
-      transition: 0.1s;
-    }
-
-    .task-check.done {
-      background: #3b82f6;
-      border-color: #3b82f6;
-    }
-
-    .task-info {
-      flex: 1;
-    }
-
-    .task-info h4 {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #0f172a;
-    }
-
-    .task-info p {
-      font-size: 0.75rem;
-      color: #64748b;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 0.1rem;
-    }
-
-    .task-info p i {
-      font-size: 0.6rem;
-      color: #94a3b8;
-    }
-
-    .task-tag {
-      background: #eef2ff;
-      padding: 0.3rem 0.8rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #4338ca;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-    }
-
-    .task-tag.urgent {
-      background: #fee2e2;
-      color: #b91c1c;
-    }
-
-    .task-tag.design {
-      background: #e0f2fe;
-      color: #0369a1;
-    }
-
-    .task-more {
-      color: #94a3b8;
-      margin-left: auto;
-      padding-left: 0.4rem;
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
-
-    /* ----- SIDE CARD (activity & progress) ----- */
-    .side-card {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      border-radius: 2rem;
-      padding: 1.5rem 1.5rem 1.8rem;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-    }
-
-    .progress-block h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .progress-block h3 i {
-      color: #3b82f6;
-    }
-
-    .progress-item {
-      margin-bottom: 1.2rem;
-    }
-
-    .progress-item .meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #334155;
-      margin-bottom: 0.3rem;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 20px;
+      margin-bottom: 1rem;
+      position: relative;
+      transition: 0.2s;
       overflow: hidden;
     }
 
-    .progress-bar .fill {
+    .product-image img {
+      width: 100%;
       height: 100%;
+      object-fit: cover;
       border-radius: 20px;
-      background: linear-gradient(90deg, #3b82f6, #2563eb);
-      width: 0%;
+      transition: 0.3s ease;
     }
 
-    .fill.design { width: 75%; }
-    .fill.dev { width: 45%; }
-    .fill.marketing { width: 90%; }
+    .product-card:hover .product-image img {
+      transform: scale(1.02);
+    }
 
-    .activity-block h3 {
+    .product-tag {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .product-name {
+      font-weight: 600;
       font-size: 1rem;
+      color: #0b1b33;
+      line-height: 1.4;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+
+    .product-price {
       font-weight: 700;
-      color: #0f172a;
+      font-size: 1.3rem;
+      color: #0f263f;
+      letter-spacing: -0.01em;
+    }
+
+    .product-price small {
+      font-weight: 400;
+      font-size: 0.7rem;
+      color: #70849c;
+      margin-left: 4px;
+      text-decoration: line-through;
+    }
+
+    .rating {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
+      gap: 3px;
+      background: #f1f6fc;
+      padding: 0.2rem 0.6rem 0.2rem 0.4rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: #1e293b;
     }
 
-    .activity-item {
-      display: flex;
-      gap: 0.8rem;
-      align-items: flex-start;
-      margin-bottom: 1rem;
+    .rating i {
+      color: #f59e0b;
+      font-size: 0.7rem;
     }
 
-    .activity-item .avator {
-      width: 34px;
-      height: 34px;
-      background: #dbeafe;
-      border-radius: 12px;
+    .add-to-cart-btn {
+      margin-top: 0.8rem;
+      background: #1e293b;
+      border: none;
+      padding: 0.7rem 0.5rem;
+      border-radius: 40px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #2563eb;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+      border: 1px solid #1e293b;
+      letter-spacing: 0.3px;
+      width: 100%;
+    }
+
+    .add-to-cart-btn i {
       font-size: 0.9rem;
-      flex-shrink: 0;
+      transition: 0.2s;
     }
 
-    .activity-item div {
-      flex: 1;
+    .add-to-cart-btn:hover {
+      background: #2d3d57;
+      border-color: #2d3d57;
+      box-shadow: 0 6px 14px rgba(30, 41, 59, 0.15);
     }
 
-    .activity-item div p {
-      font-size: 0.85rem;
-      color: #1e293b;
+    .add-to-cart-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* ---- mini cart toast ---- */
+    .cart-toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #1e293b;
+      color: white;
+      padding: 1rem 1.8rem 1rem 1.5rem;
+      border-radius: 60px;
       font-weight: 500;
-    }
-
-    .activity-item div span {
-      font-size: 0.7rem;
-      color: #94a3b8;
+      font-size: 0.95rem;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
-      gap: 0.3rem;
-      margin-top: 0.1rem;
+      gap: 14px;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+      z-index: 999;
+      border: 1px solid #334155;
+      pointer-events: none;
     }
 
-    .activity-item div span i {
-      font-size: 0.5rem;
-      color: #94a3b8;
+    .cart-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    /* responsive */
-    @media (max-width: 780px) {
-      .grid-2 {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
+    .cart-toast i {
+      font-size: 1.2rem;
+      color: #b9d0e8;
+    }
+
+    .cart-toast span {
+      background: #3b4c63;
+      padding: 0.1rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      margin-left: 4px;
+    }
+
+    .cart-toast .close-toast {
+      background: transparent;
+      border: none;
+      color: #94a9c2;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-left: 6px;
+      transition: 0.2s;
+    }
+
+    .cart-toast .close-toast:hover {
+      color: white;
+    }
+
+    /* ---- responsive ---- */
+    @media (max-width: 700px) {
+      .shop-container {
+        padding: 1.25rem;
       }
-      .dashboard {
-        padding: 1.5rem;
-      }
-      .header {
+      .top-bar {
         flex-direction: column;
         align-items: stretch;
+        gap: 1rem;
       }
-      .header-actions {
+      .nav-actions {
         flex-wrap: wrap;
+        gap: 0.8rem;
       }
       .search-wrapper input {
-        width: 120px;
+        width: 100%;
+      }
+      .search-wrapper {
+        flex: 1;
+      }
+      .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        gap: 1rem;
+      }
+      .category-row {
+        gap: 0.5rem;
+      }
+      .category-pill {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.9rem;
+      }
+      .cart-toast {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        border-radius: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0.9rem 1.2rem;
       }
     }
 
-    @media (max-width: 480px) {
-      .stats {
+    @media (max-width: 450px) {
+      .product-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
       }
-      .task-item {
-        flex-wrap: wrap;
+      .product-image {
+        height: 130px;
       }
-      .task-tag {
-        margin-left: 2.4rem;
-      }
-      .task-more {
-        display: none;
+      .product-name {
+        font-size: 0.85rem;
       }
     }
   </style>
 </head>
 <body>
+  <div class="shop-container">
 
-<div class="dashboard">
+    <!-- header -->
+    <header class="top-bar">
+      <div class="brand">
+        <i class="fas fa-store-alt"></i>
+        <h1>Urban<span>Market</span></h1>
+      </div>
+      <div class="nav-actions">
+        <div class="search-wrapper">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search products…" aria-label="Search">
+        </div>
+        <div class="icon-group">
+          <button aria-label="Account"><i class="far fa-user-circle"></i></button>
+          <button class="cart-badge" aria-label="Cart" id="cartIcon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="badge" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
 
-  <!-- header -->
-  <div class="header">
-    <div class="header-left">
-      <h1>
-        <i class="fas fa-rocket"></i> TaskFlow
-      </h1>
-      <p>
-        <i class="fas fa-circle" style="color: #22c55e; font-size: 0.5rem;"></i> 
-        4 active projects · 12 tasks
-      </p>
+    <!-- categories -->
+    <div class="category-row">
+      <span class="category-pill active"><i class="fas fa-th-large"></i> All</span>
+      <span class="category-pill"><i class="fas fa-laptop"></i> Electronics</span>
+      <span class="category-pill"><i class="fas fa-tshirt"></i> Apparel</span>
+      <span class="category-pill"><i class="fas fa-home"></i> Home</span>
+      <span class="category-pill"><i class="fas fa-book"></i> Books</span>
+      <span class="category-pill"><i class="fas fa-running"></i> Sports</span>
     </div>
-    <div class="header-actions">
-      <div class="search-wrapper">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search tasks...">
-      </div>
-      <div class="btn-icon"><i class="far fa-bell"></i></div>
-      <div class="btn-primary">
-        <i class="fas fa-plus"></i> New
-      </div>
-    </div>
-  </div>
 
-  <!-- stats -->
-  <div class="stats">
-    <div class="stat-card">
-      <div class="stat-icon"><i class="fas fa-list-check"></i></div>
-      <div class="stat-content">
-        <h3>12</h3>
-        <p>Total tasks</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i class="fas fa-clock"></i></div>
-      <div class="stat-content">
-        <h3>4</h3>
-        <p>In progress</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i class="fas fa-check-circle" style="color: #22c55e;"></i></div>
-      <div class="stat-content">
-        <h3>6</h3>
-        <p>Completed</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon"><i class="fas fa-flag" style="color: #f59e0b;"></i></div>
-      <div class="stat-content">
-        <h3>2</h3>
-        <p>Overdue</p>
-      </div>
+    <!-- product grid -->
+    <div class="product-grid" id="productGrid">
+      <!-- products injected via JS with images -->
     </div>
   </div>
 
-  <!-- grid: tasks + side -->
-  <div class="grid-2">
-    <!-- left: task list -->
-    <div class="task-section">
-      <div class="task-header">
-        <h2><i class="fas fa-bars-progress"></i> Today's tasks</h2>
-        <span>3 remaining</span>
-      </div>
-
-      <div class="task-item">
-        <div class="task-check done"><i class="fas fa-check" style="font-size: 0.6rem;"></i></div>
-        <div class="task-info">
-          <h4>Design system audit</h4>
-          <p><i class="fas fa-circle" style="color: #3b82f6;"></i> Due today  ·  2:30 PM</p>
-        </div>
-        <span class="task-tag design">Design</span>
-        <span class="task-more"><i class="fas fa-ellipsis-vertical"></i></span>
-      </div>
-
-      <div class="task-item">
-        <div class="task-check"></div>
-        <div class="task-info">
-          <h4>Homepage copy review</h4>
-          <p><i class="fas fa-circle" style="color: #f59e0b;"></i> Due tomorrow  ·  10:00 AM</p>
-        </div>
-        <span class="task-tag urgent">Urgent</span>
-        <span class="task-more"><i class="fas fa-ellipsis-vertical"></i></span>
-      </div>
-
-      <div class="task-item">
-        <div class="task-check"></div>
-        <div class="task-info">
-          <h4>User flow testing</h4>
-          <p><i class="fas fa-circle" style="color: #8b5cf6;"></i> Due Thu  ·  4:00 PM</p>
-        </div>
-        <span class="task-tag">Research</span>
-        <span class="task-more"><i class="fas fa-ellipsis-vertical"></i></span>
-      </div>
-
-      <div class="task-item">
-        <div class="task-check done"><i class="fas fa-check" style="font-size: 0.6rem;"></i></div>
-        <div class="task-info">
-          <h4>Onboarding email draft</h4>
-          <p><i class="fas fa-circle" style="color: #22c55e;"></i> Completed  ·  1 day ago</p>
-        </div>
-        <span class="task-tag design">Content</span>
-        <span class="task-more"><i class="fas fa-ellipsis-vertical"></i></span>
-      </div>
-
-      <div class="task-item">
-        <div class="task-check"></div>
-        <div class="task-info">
-          <h4>Analytics dashboard</h4>
-          <p><i class="fas fa-circle" style="color: #ef4444;"></i> Overdue  ·  Fri</p>
-        </div>
-        <span class="task-tag urgent">Urgent</span>
-        <span class="task-more"><i class="fas fa-ellipsis-vertical"></i></span>
-      </div>
-
-      <div style="margin-top: 1rem; text-align: center; padding: 0.5rem;">
-        <span style="color: #3b82f6; font-weight: 500; font-size: 0.85rem; opacity: 0.7; cursor: default;">
-          <i class="fas fa-arrow-right"></i> View all 12 tasks
-        </span>
-      </div>
-    </div>
-
-    <!-- right side: progress + activity -->
-    <div class="side-card">
-      <!-- progress -->
-      <div class="progress-block">
-        <h3><i class="fas fa-chart-simple"></i> Project progress</h3>
-        <div class="progress-item">
-          <div class="meta"><span>Design system</span> <span>75%</span></div>
-          <div class="progress-bar"><div class="fill design"></div></div>
-        </div>
-        <div class="progress-item">
-          <div class="meta"><span>Frontend dev</span> <span>45%</span></div>
-          <div class="progress-bar"><div class="fill dev"></div></div>
-        </div>
-        <div class="progress-item">
-          <div class="meta"><span>Marketing page</span> <span>90%</span></div>
-          <div class="progress-bar"><div class="fill marketing"></div></div>
-        </div>
-      </div>
-
-      <!-- activity -->
-      <div class="activity-block">
-        <h3><i class="fas fa-clock-rotate-left"></i> Recent activity</h3>
-        <div class="activity-item">
-          <div class="avator"><i class="fas fa-user"></i></div>
-          <div><p>Elena updated <strong>"Homepage copy"</strong></p><span><i class="fas fa-circle"></i> 2 hours ago</span></div>
-        </div>
-        <div class="activity-item">
-          <div class="avator"><i class="fas fa-user"></i></div>
-          <div><p>Marcus completed <strong>"Wireframes v2"</strong></p><span><i class="fas fa-circle"></i> 5 hours ago</span></div>
-        </div>
-        <div class="activity-item">
-          <div class="avator"><i class="fas fa-user"></i></div>
-          <div><p>Sophia added <strong>"User testing"</strong> task</p><span><i class="fas fa-circle"></i> yesterday</span></div>
-        </div>
-        <div style="margin-top: 0.2rem; opacity: 0.6; font-size: 0.75rem; color: #475569; display: flex; gap: 0.6rem; padding: 0.3rem 0;">
-          <span><i class="far fa-comment"></i> 3 comments</span>
-          <span><i class="far fa-clock"></i> 2 pending</span>
-        </div>
-      </div>
-    </div>
+  <!-- mini cart toast -->
+  <div class="cart-toast" id="cartToast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastMessage">Added to cart</span>
+    <span id="toastCount">0</span>
+    <button class="close-toast" id="closeToast"><i class="fas fa-times"></i></button>
   </div>
-  <!-- subtle footer note (UI only) -->
-  <div style="margin-top: 2rem; border-top: 1px solid rgba(0,0,0,0.03); padding-top: 1.2rem; display: flex; justify-content: space-between; font-size: 0.75rem; color: #94a3b8; flex-wrap: wrap; gap: 0.5rem;">
-    <span><i class="far fa-calendar"></i> 22 July 2026 · 3 active sessions</span>
-    <span><i class="fas fa-user-group"></i> 5 team members online</span>
-  </div>
-</div>
 
-<!-- no JS needed, purely UI -->
+  <script>
+    (function() {
+      // ---- product data with realistic image URLs (placeholder) ----
+      const products = [
+        { id: 1, name: 'Wireless Noise-Cancelling Headphones', price: 149.99, oldPrice: 199.99, tag: 'Sale', img: 'https://picsum.photos/seed/headphone/400/400' },
+        { id: 2, name: 'Smart Fitness Tracker 2.0', price: 89.00, oldPrice: null, tag: 'New', img: 'https://picsum.photos/seed/fitness/400/400' },
+        { id: 3, name: 'Premium Cotton T-Shirt (Pack of 2)', price: 34.50, oldPrice: 44.00, tag: 'Eco', img: 'https://picsum.photos/seed/tshirt/400/400' },
+        { id: 4, name: '4K Action Camera + Waterproof', price: 219.99, oldPrice: 279.99, tag: 'Popular', img: 'https://picsum.photos/seed/camera/400/400' },
+        { id: 5, name: 'Minimalist Desk Lamp LED', price: 45.00, oldPrice: 59.99, tag: null, img: 'https://picsum.photos/seed/lamp/400/400' },
+        { id: 6, name: 'Leather Backpack Laptop 15″', price: 79.90, oldPrice: 99.90, tag: 'Best', img: 'https://picsum.photos/seed/backpack/400/400' },
+        { id: 7, name: 'Organic Green Tea 50 bags', price: 12.99, oldPrice: null, tag: 'Organic', img: 'https://picsum.photos/seed/tea/400/400' },
+        { id: 8, name: 'Bluetooth Speaker XB-12', price: 59.99, oldPrice: 79.99, tag: null, img: 'https://picsum.photos/seed/speaker/400/400' },
+        { id: 9, name: 'Stainless Steel Water Bottle', price: 24.90, oldPrice: 32.00, tag: 'Eco', img: 'https://picsum.photos/seed/bottle/400/400' },
+        { id: 10, name: 'Yoga Mat Non-Slip 6mm', price: 29.99, oldPrice: 39.99, tag: 'Sale', img: 'https://picsum.photos/seed/yoga/400/400' },
+        { id: 11, name: 'Wireless Charging Pad', price: 32.50, oldPrice: 45.00, tag: null, img: 'https://picsum.photos/seed/charger/400/400' },
+        { id: 12, name: 'Denim Jacket Classic', price: 67.00, oldPrice: 89.00, tag: 'Limited', img: 'https://picsum.photos/seed/jacket/400/400' }
+      ];
+
+      // ----- render products -----
+      const grid = document.getElementById('productGrid');
+      let cartItems = 0;
+
+      function renderProducts() {
+        let html = '';
+        products.forEach(p => {
+          const oldPriceHtml = p.oldPrice ? `<small>$${p.oldPrice.toFixed(2)}</small>` : '';
+          const tagHtml = p.tag ? `<span class="product-tag">${p.tag}</span>` : '';
+          // random rating (4 or 5 stars)
+          const stars = (4 + Math.floor(Math.random() * 2)) > 4 ? 5 : 4;
+          const starIcon = stars === 5 ? 'fas fa-star' : 'fas fa-star-half-alt';
+          html += `
+            <div class="product-card" data-id="${p.id}">
+              <div class="product-image">
+                <img src="${p.img}" alt="${p.name}" loading="lazy">
+                ${tagHtml}
+              </div>
+              <div class="product-info">
+                <div class="product-name">${p.name}</div>
+                <div class="product-meta">
+                  <div class="product-price">$${p.price.toFixed(2)} ${oldPriceHtml}</div>
+                  <div class="rating"><i class="${starIcon}"></i> ${stars}.0</div>
+                </div>
+                <button class="add-to-cart-btn" data-id="${p.id}"><i class="fas fa-plus-circle"></i> Add to cart</button>
+              </div>
+            </div>
+          `;
+        });
+        grid.innerHTML = html;
+      }
+      renderProducts();
+
+      // ----- cart & toast logic -----
+      const cartCountEl = document.getElementById('cartCount');
+      const toast = document.getElementById('cartToast');
+      const toastMsg = document.getElementById('toastMessage');
+      const toastCount = document.getElementById('toastCount');
+      const closeToastBtn = document.getElementById('closeToast');
+      let toastTimeout = null;
+
+      function updateCartUI() {
+        cartCountEl.textContent = cartItems;
+        toastCount.textContent = cartItems;
+      }
+
+      function showToast(message, addedCount = 1) {
+        toastMsg.textContent = message || 'Added to cart';
+        toastCount.textContent = cartItems;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2800);
+      }
+
+      function addToCart(productId) {
+        const product = products.find(p => p.id === productId);
+        if (!product) return;
+        cartItems += 1;
+        updateCartUI();
+        showToast(`“${product.name}” added`, 1);
+
+        const btn = document.querySelector(`.add-to-cart-btn[data-id="${productId}"]`);
+        if (btn) {
+          btn.style.transform = 'scale(0.94)';
+          setTimeout(() => btn.style.transform = '', 150);
+        }
+      }
+
+      // event delegation for "add to cart"
+      grid.addEventListener('click', function(e) {
+        const target = e.target.closest('.add-to-cart-btn');
+        if (!target) return;
+        const id = parseInt(target.dataset.id, 10);
+        if (id) addToCart(id);
+      });
+
+      // close toast manually
+      closeToastBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toast.classList.remove('show');
+        clearTimeout(toastTimeout);
+      });
+
+      // click on cart icon shows current cart count
+      document.getElementById('cartIcon').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (cartItems === 0) {
+          showToast('Your cart is empty', 0);
+        } else {
+          showToast(`Cart: ${cartItems} item${cartItems > 1 ? 's' : ''}`, 0);
+        }
+      });
+
+      // initial cart state
+      updateCartUI();
+
+      // category pill interaction (cosmetic)
+      document.querySelectorAll('.category-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+          document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          const filter = this.textContent.trim();
+          if (filter !== 'All') {
+            showToast(`Showing: ${filter}`, 0);
+          } else {
+            showToast('Showing all products', 0);
+          }
+        });
+      });
+
+      // search input (realistic behavior)
+      const searchInput = document.querySelector('.search-wrapper input');
+      searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value.trim();
+          if (query) {
+            showToast(`Search for “${query}”`, 0);
+          } else {
+            showToast('Search cleared', 0);
+          }
+          this.blur();
+        }
+      });
+
+      console.log('🛍️ UrbanMarket UI with images — realistic e‑commerce');
+    })();
+  </script>
 </body>
 </html>

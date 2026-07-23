@@ -5,16 +5,13 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name>TaskFlow Dashboard</display-name>
-    <description>Modern task management dashboard UI</description>
+    <display-name>E-Commerce Store</display-name>
+    <description>Modern E-Commerce Application</description>
 
-    <!-- Welcome file list -->
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Servlet configuration -->
     <servlet>
         <servlet-name>DashboardServlet</servlet-name>
         <servlet-class>com.taskflow.controller.DashboardServlet</servlet-class>
@@ -23,23 +20,16 @@
 
     <servlet-mapping>
         <servlet-name>DashboardServlet</servlet-name>
-        <url-pattern>/dashboard</url-pattern>
         <url-pattern>/home</url-pattern>
+        <url-pattern>/shop</url-pattern>
     </servlet-mapping>
 
-    <!-- Session timeout (minutes) -->
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
 
-    <!-- Error pages -->
     <error-page>
         <error-code>404</error-code>
-        <location>/WEB-INF/error.html</location>
-    </error-page>
-    
-    <error-page>
-        <error-code>500</error-code>
         <location>/WEB-INF/error.html</location>
     </error-page>
 </web-app>
